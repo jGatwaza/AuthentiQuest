@@ -6,6 +6,8 @@ const app = express();
 
 app.use(cors());
 app.use(express.json()); // Middleware to parse JSON
+const authRoutes = require('./auth');
+app.use('/api', authRoutes);
 
 const PORT = process.env.PORT || 5001;
 
