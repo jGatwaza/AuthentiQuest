@@ -11,6 +11,7 @@ import Login from './components/Login';
 import Challenge from './components/Challenge';
 import Score from './components/Score';
 import Leaderboard from './components/Leaderboard';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/challenge" element={<Challenge />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/score" element={<Score />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
         </Routes>
