@@ -5,28 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { getAuth } from "firebase/auth";
-import { getDocs, getFirestore, collection } from "firebase/firestore";
-const firebaseConfig = {
-  apiKey: "AIzaSyAhJJaVK1FaPsXKJzaoD014LqmH7esjBQM",
-  authDomain: "authentiquest.firebaseapp.com",
-  projectId: "authentiquest",
-  storageBucket: "authentiquest.appspot.com",
-  messagingSenderId: "448490934032",
-  appId: "1:448490934032:web:44ede1643b54051c91df95",
-  measurementId: "G-V1SZHVH1L6"
-};
-// Initialize Firebase
-initializeApp(firebaseConfig)
-const db = getFirestore()
-const colRef = collection(db, 'people')
-getDocs(colRef).then((snapshot) => {
-  let documents = snapshot.docs.map(doc => ({...doc.data(), id: doc.id}));
-  console.log(documents);
-});
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

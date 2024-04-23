@@ -1,4 +1,5 @@
 import { signOut } from 'firebase/auth';
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 import {
@@ -65,8 +66,6 @@ function Challenge() {
         }
       };
       
-      
-  
     useEffect(() => {
       fetch('http://localhost:3001/images')
         .then(response => response.json())
@@ -76,15 +75,12 @@ function Challenge() {
   
     useEffect(() => {
         if (gameOver) {
-          console.log("Game over detected, attempting to save score...");
-          saveNewScoreInFirestore(userId, score).then(() => {
-            console.log("New score has been saved after game over");
-          }).catch((error) => {
-            console.error("Failed to save new score: ", error);
-          });
+            console.log("Game over detected, attempting to save score...");
+            axios.post('http://localhost:3001/api/score', { userId, score })
+              .then(() => console.log("Score saved successfully"))
+              .catch(error => console.error("Failed to save score:", error));
         }
-      }, [gameOver, score, userId]); // Ensuring that the effect is triggered when gameOver or score changes
-      
+    }, [gameOver, score, userId]);
   
     const handleGuess = (guess) => {
       if (!gameOver && images.length > 0) {

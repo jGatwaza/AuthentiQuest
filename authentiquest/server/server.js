@@ -40,48 +40,50 @@ app.get('/images', async (req, res) => {
         await client.close();
     }
 });
+app.get('/people', async (req, res) => {
+  try {
+      await client.connect();
+      const database = client.db('people');
+      const collection = database.collection('people');
 
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-});
+      const people = await collection.find().toArray();
 
-app.get('/api/google-login', async (req, res) => {
-  alert(res);
-  const { token } = req.body; // Token received from GoogleLogin component
-  const decoded = jwt.decode(token); // Assuming you are sending the JWT token from the client
-
-  const db = await connectToDatabase();
-  const users = db.collection('users');
-
-  let user = await users.findOne({ email: decoded.email });
-
-  if (!user) {
-    // User does not exist, so create a new user
-    const newUser = {
-      email: decoded.email,
-      name: decoded.name,
-      googleId: decoded.sub, // Google's unique ID for the user
-      tokens: []
-    };
-    await users.insertOne(newUser);
-    user = newUser;
+      res.json(people); // Send people as JSON
+  } catch (e) {
+      console.error("Error connecting to MongoDB:", e);
+      res.status(500).send('Error fetching images.');
+  } finally {
+      await client.close();
   }
-
-  // Create a JWT token for our session management
-  const userToken = jwt.sign({ userID: user._id }, process.env.JWT_SECRET, { expiresIn: '2h' });
-
-  // Store the token in the user's record
-  await users.updateOne({ _id: user._id }, { $push: { tokens: userToken } });
-
-  // Set a cookie with the token
-  res.cookie('session_token', userToken, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV !== 'development', // secure in production
-    maxAge: 7200000 // 2 hours in milliseconds
-  });
-
-  res.status(200).json({ message: 'Logged in successfully!' });
 });
+app.post('/api/score', async (req, res) => {
+  try {
+    await client.connect();
+    const database = client.db('people');
+    const collection = database.collection('people');
+
+    const { userId, score } = req.body; // assuming these values are passed in the body of the request
+
+    const updateResult = await collection.updateOne(
+      { userId: userId },
+      { $set: { score: score } },
+      { upsert: true } // this will insert a new document if no existing document matches the userId
+    );
+
+    if (updateResult.matchedCount === 0 && updateResult.upsertedCount === 0) {
+      res.status(404).json({ error: "No user found and no insert done" });
+    } else {
+      res.status(200).json({ message: "Score updated successfulli" });
+    }
+  } catch (e) {
+    console.error("Error updating score in MongoDB:", e);
+    res.status(500).send('Failed to update score.');
+  } finally {
+    await client.close();
+  }
+});
+
+
 
 app.post('/api/logout', (req, res) => {
   res.clearCookie('session_token');
@@ -110,4 +112,6 @@ app.post('/api/logout', (req, res) => {
       res.status(500).json({ error: "Failed to fetch images", details: error.message });
     }
   });
-  
+  app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+});
