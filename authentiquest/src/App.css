@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -14,7 +15,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #14213d;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -37,7 +38,7 @@
   }
 }
 nav {
-  background-color: #000000; /* Black background for the navbar */
+  background-color: #14213d; /* Black background for the navbar */
   height: 80px;
 }
 .wrapper{
@@ -58,4 +59,52 @@ nav {
 
 .link:hover, .active-link:hover {
   opacity: 0.8; /* Hover effect for better UI interaction feedback */
+}
+.padded{
+  margin-left: 5%;
+}
+.lead-p{
+  font-size: 20px;
+  font-weight: bold;
+  color: #fca311;
+}
+.choice-btn{
+  background-color: #fca311;
+  color: #14213d;
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+.choice-btn:hover{
+  background-color: #14213d;
+  color: #fca311;
+}
+.regular{
+  font-size: 16px;
+  font-weight: bold;
+  color: #14213d;
+}
+.feedback{
+  font-size: 25px;
+}
+
+.rowe{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.pointer{
+  cursor: pointer;
+}
+.activeColor{
+  padding-top: 5px;
+  height: 30px;
+  width: 10%;
+  border: 2px solid grey;
+  cursor: pointer;
 }
