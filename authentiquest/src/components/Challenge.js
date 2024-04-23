@@ -1,13 +1,19 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+
 import {
     BrowserRouter as Router,
     Routes,
     Route,
     NavLink
   } from 'react-router-dom';
+
+import { db } from '../firebaseConfig';
 import { database } from '../firebaseConfig';
+import { doc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import {useNavigate} from 'react-router-dom';
+import { useAuth } from '../AuthContext';
 function Challenge() {
     const [images, setImages] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -15,37 +21,97 @@ function Challenge() {
     const [feedback, setFeedback] = useState('');
     const [gameOver, setGameOver] = useState(false);
     const history = useNavigate();
-    useEffect(() => {
-        fetch('http://localhost:3001/images')
-            .then(response => response.json())
-            .then(data => setImages(data))
-            .catch(err => console.error('Error fetching images:', err));
-    }, []);
-
-    const handleGuess = (guess) => {
-        if (!gameOver && images.length > 0) {
-            const correctAnswer = images[currentIndex].origin;
-            if (guess === correctAnswer) {
-                setFeedback('Correct!');
-                setScore(score + 1);
-            } else {
-                setFeedback('Incorrect. Try again!');
-            }
-
-            // Move to next image after a short delay
-            setTimeout(() => {
-                if (currentIndex < images.length - 1) {
-                    setCurrentIndex(currentIndex + 1);
-                } else {
-                    setGameOver(true); // Stop the challenge after the last image
-                }
-                setFeedback(''); // Reset feedback for the next image
-            }, 1000);
+    const { userId } = useAuth();
+  
+    const updateScoreInFirestore = async (newScore) => {
+      if (userId) {
+        console.log(userId);
+        const userDocRef = doc(db, 'users', userId);
+  
+        try {
+          await updateDoc(userDocRef, {
+            score: newScore
+          });
+          alert("Score updated successfully");
+        } catch (error) {
+          alert("Error updating score: ", error);
         }
+      }
+      else{
+        alert("User not authenticated");
+      }
     };
-    const handleClick = ()=>{
-        signOut(database).then(val => history('/'));
-    }
+    const saveNewScoreInFirestore = async (userId, newScore) => {
+        if (!userId) {
+          console.log("User not authenticated");
+          return; // Exit if there is no user ID
+        }
+      
+        console.log(`Attempting to save score for user ID: ${userId} with score: ${newScore}`); // Log user ID and score
+      
+        // Reference the 'scores' collection and prepare a new document
+        const scoresCollectionRef = collection(db, 'authentiquest');
+      
+        try {
+          // Add a new document with the user's score and user ID
+          const docRef = await addDoc(scoresCollectionRef, {
+            userId: userId,
+            score: newScore,
+            timestamp: new Date()
+          });
+          console.log("New score document created with ID: ", docRef.id);
+        } catch (error) {
+          console.error("Error creating new score document: ", error);
+        }
+      };
+      
+      
+  
+    useEffect(() => {
+      fetch('http://localhost:3001/images')
+        .then(response => response.json())
+        .then(data => setImages(data))
+        .catch(err => console.error('Error fetching images:', err));
+    }, []);
+  
+    useEffect(() => {
+        if (gameOver) {
+          console.log("Game over detected, attempting to save score...");
+          saveNewScoreInFirestore(userId, score).then(() => {
+            console.log("New score has been saved after game over");
+          }).catch((error) => {
+            console.error("Failed to save new score: ", error);
+          });
+        }
+      }, [gameOver, score, userId]); // Ensuring that the effect is triggered when gameOver or score changes
+      
+  
+    const handleGuess = (guess) => {
+      if (!gameOver && images.length > 0) {
+        const correctAnswer = images[currentIndex].origin;
+        if (guess === correctAnswer) {
+          setFeedback('Correct!');
+          setScore((prevScore) => prevScore + 1);
+        } else {
+          setFeedback('Incorrect. Try again!');
+        }
+  
+        setTimeout(() => {
+          if (currentIndex < images.length - 1) {
+            setCurrentIndex((prevIndex) => prevIndex + 1);
+            setFeedback('');
+          } else {
+            console.log("Setting game over to true..."); // Debug log
+            setGameOver(true);
+          }
+        }, 1000);
+      }
+    };
+  
+    const handleClick = () => {
+      signOut(database).then(() => history('/'));
+    };
+  
     return (
         <div>
         <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#000000', padding: '0.5rem 1rem' }}>

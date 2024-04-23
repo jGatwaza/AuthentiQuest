@@ -1,4 +1,10 @@
 import React from 'react';
+import { firestore } from '../firebaseConfig';
+import { database } from '../firebaseConfig';
+import { doc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
+import {useNavigate} from 'react-router-dom';
+import { useAuth } from '../AuthContext';
 import {
     BrowserRouter as Router,
     Routes,

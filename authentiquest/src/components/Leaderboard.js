@@ -1,10 +1,23 @@
 import React from 'react';
+import { db } from '../firebaseConfig';
+import { database } from '../firebaseConfig';
+import { doc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
+import {useNavigate} from 'react-router-dom';
+import { useAuth } from '../AuthContext';
+
+
 import {
     BrowserRouter as Router,
     Routes,
     Route,
     NavLink
   } from 'react-router-dom';
+import { initializeApp } from 'firebase/app';
+const scoresCollectionRef = collection(db, 'books');
+
+getDocs(scoresCollectionRef).then((querySnapshot) => {console.log(querySnapshot.docs)});
+
 const Leaderboard = () => {
     return (
         <div>

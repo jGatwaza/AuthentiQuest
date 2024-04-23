@@ -1,27 +1,27 @@
-
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { database } from "../firebaseConfig";
 import { useNavigate } from 'react-router-dom';
-
+import { useAuth } from '../AuthContext';
 function Login() {
   const [login, setLogin] = useState(false);
   const navigate = useNavigate(); // Initialize navigate function
   const history = useNavigate();
-
+  const { updateUserId } = useAuth();
   const handleSubmit = (e, type) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
     if (type === 'Sign Up'){
     createUserWithEmailAndPassword(database, email, password)
-      .then(data => {
+      .then(data => {updateUserId(data.user.uid);
         console.log(data, "authData");
         history('/challenge'); // Use navigate function here
       }).catch(err => alert(err));
     } else {
       signInWithEmailAndPassword(database, email, password)
       .then(data => {
+        updateUserId(data.user.uid);
         console.log(data, "authData");
         history('/challenge'); // Use navigate function here
       }). catch(err => {alert(err); setLogin(true)});
