@@ -2,7 +2,9 @@
 .App {
   text-align: center;
 }
-
+*{
+  transition: all 0.3s !important;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -38,8 +40,25 @@
   }
 }
 nav {
-  background-color: #14213d; /* Black background for the navbar */
+  background-color: #011627 !important; /* Black background for the navbar */
+  position: absolute;
+  top: 0px;
+  left: 0px;
   height: 80px;
+  width: 100% !important;
+}
+.logoutb{
+  background-color: #a70000;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding-left: 3vw;
+  padding-right: 3vw;
+
 }
 .wrapper{
   padding: 50px;
@@ -66,7 +85,7 @@ nav {
 .lead-p{
   font-size: 20px;
   font-weight: bold;
-  color: #fca311;
+  color: #14213d;
 }
 .choice-btn{
   background-color: #fca311;
@@ -81,8 +100,7 @@ nav {
   padding-right: 5vw;
 }
 .choice-btn:hover{
-  background-color: #14213d;
-  color: #fca311;
+  background-color: #FDFFFC;
 }
 .regular{
   font-size: 16px;
@@ -102,9 +120,291 @@ nav {
   cursor: pointer;
 }
 .activeColor{
-  padding-top: 5px;
-  height: 30px;
-  width: 10%;
-  border: 2px solid grey;
+  color: #fca311 !important;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+}
+
+/******************************************************************* LOGIN PAGE */
+/* Overall page styling */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Kadwa', sans-serif !important; 
+
+}
+
+/* Container for the entire page to center the form */
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-image: url('https://encycolorpedia.com/14213d.png'); 
+  background-size: cover; 
+  height: 100vh;
+}
+
+/* Form container with a background */
+.form-container {
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  border-radius: 30px;
+  padding: 2em; /* You can adjust the padding to your liking */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to your form container */
+  width: 100%;
+  max-width: 564px; /* Adjust the max width to your preference */
+  margin: 1em;
+}
+
+/* Title styling */
+.title {
+  color: #000000;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: .3em;
+}
+
+/* Input container for alignment */
+.input-container {
+  margin-bottom: 1em; /* Spacing between input fields */
+}
+
+/* Styling for input fields */
+.input-field {
+  width: 100%; /* Full width of the container */
+  padding: 1em;
+  margin-top: 0.5em; /* Space above the input field */
+  border: 0px solid #000000;
+  background: #FCA311;
+  border-radius: 20px;
+  font-size: 20px;
+  color: #000000;
+}
+.input-field::placeholder {
+  color: #ffffff; 
+}
+
+/* Button container */
+.login-button-container {
+  display: flex;
+  justify-content: center; /* Centers the button horizontally */
+}
+
+/* Button styling */
+.login-button {
+  padding: 1em 2em;
+  border: 0px solid #000000;
+  background: #FCA311;
+  border-radius: 20px;
+  font-size: 15;
+  color: #000000;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #e0c2a2; /* Lighter shade when hovered for visual feedback */
+}
+
+.logo-container {
+  text-align: center; /* This will center the logo above the title if the container is full width */
+}
+
+.logo {
+  align-items: center; /* This makes the image inline with text, allowing for text-align to work */
+  width: 30%;/* Adjust this to set the width of your logo */
+  height: 50% !important; /* Maintain aspect ratio */
+  margin-bottom: 1em;
+  margin-left: 32%;
+}
+
+.title {
+  text-align: center;
+}
+
+
+/******************************************************************* NAME PAGE  */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #14213D !important; /* Light gray background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Kadwa',
+}
+
+.containeri {
+  width: 100%; /* Full width */
+  max-width: 600px; /* Increased maximum width of the container */
+  background-color: white; /* White background */
+  padding: 60px; /* Increased padding around the content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for some depth */
+  border-radius: 8px; /* Rounded corners */
+  margin: 40px; /* Increased space from the top and bottom edges */
+  text-align: center; /* Center the text */
+  border-radius: 30px;
+}
+
+h1 {
+  color: black;
+  margin-bottom: 30px; /* Increased bottom margin */
+  font-size: 2.5em; /* Larger font size */
+}
+
+.input-group {
+  margin-bottom: 30px;
+}
+
+input[type="text"] {
+  padding: 15px;
+  width: 100% !important;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  width: calc(100% - 34px); /* Adjusted for the new padding */
+  font-size: 1.2em; /* Larger font size for input */
+}
+
+#enter-button {
+  padding: 15px 25px;
+  background-color: #FCA311;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.2em; /* Larger font size for button */
+}
+
+#enter-button:hover {
+  background-color: #d5af87;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+
+/******************************************************************* SCORE PAGE */
+
+/* Adjust the body tag to use Flexbox for centering */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #14213D; /* Dark blue background */
+}
+
+/* Remove absolute positioning on the .score-container */
+.score-container {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  /* Removed position, top, left, and transform properties */
+}
+
+/* Adjust .score-box for the white container */
+.score-box {
+  background-color: #ffffff;
+  padding: 3em; /* Adjusted for a larger box */
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 700px; /* Adjust width as needed */
+  max-width: 80%; /* To prevent it from getting too wide on larger screens */
+  margin: 0 auto; /* Auto margins for horizontal centering */
+  display: flex; /* Using Flexbox to center children */
+  flex-direction: column; /* Stack children vertically */
+  align-items: center; /* Center children horizontally */
+}
+
+/* Adjust the .score-title for a larger text */
+.score-title {
+  font-size: 60px; /* Larger font size for the title */
+  font-family: 'Kadwa', sans-serif;
+  color: #000000;
+  margin-bottom: 1em;
+}
+
+/* Adjust the .score-button for a larger button */
+.score-button {
+  background-color: #ffa726;
+  color: #ffffff;
+  border: none;
+  width: 90% !important;
+  font-size: 2em; /* Larger font size for the text in the button */
+  border-radius: 20px;
+  display: block; /* Use block to apply width and center */
+  width: fit-content; /* Adjust width to fit the content */
+}
+
+/* Adjust the .score-value for a larger text, if needed */
+.score-value {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+/******************************************************************* LEADERBOARD PAGE */
+
+.leaderboard-container {
+  width: 80vw !important; /* Width relative to the body width */
+/* Maximum width */
+margin-top: 10vh !important; /* Top margin */
+  margin: 0 auto; /* Centers the container horizontally */
+  text-align: center; /* Centers text */
+  padding: 5vw; /* Reduced padding to decrease height */
+  background: #ffffff; /* Background color */
+ /* Position context for absolutely positioned elements */
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.leaderboard-title {
+  color: #000000; /* Text color for the leaderboard title */
+  margin-bottom: 20px; /* Bottom margin */
+}
+
+.leaderboard {
+  width: 100%; /* Width relative to its container */
+  border-collapse: collapse; /* Collapses border */
+  margin: 0 auto; /* Centers the table */
+}
+
+.leaderboard th, .leaderboard td {
+  border: 1px solid #000; /* Border color */
+  padding: 14px; /* Cell padding */
+  background: #FCA311; /* Background color for cells */
+}
+
+.leaderboard th {
+  background: #FCA311; /* Background color for the header cells */
+  color: #000000; /* Text color for header cells */
+}
+
+.thank-you {
+  margin-top: 20px; /* Top margin */
+  font-size: 1.2em; /* Font size */
+  color: #000000; /* Text color */
+}
+
+.logo-container {
+  position: absolute; /* Positions logo absolutely within the container */
+  top: -60px; /* Positions logo above the container */
+  left: 0; /* Aligns logo to the left side */
+  width: 100%; /* Ensures the container spans the width of its parent */
+}
+
+
+/******************************************************************* CHALLENGE */
+.white{
+ color : white !important;
+ font-family: 'Kadwa', sans-serif !important; 
 }

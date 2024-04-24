@@ -62,12 +62,12 @@ app.post('/api/score', async (req, res) => {
     const database = client.db('people');
     const collection = database.collection('people');
 
-    const { userId, score } = req.body; // assuming these values are passed in the body of the request
+    const { userId, username ,score } = req.body; // assuming these values are passed in the body of the request
 
     const updateResult = await collection.updateOne(
       { userId: userId },
-      { $set: { score: score } },
-      { upsert: true } // this will insert a new document if no existing document matches the userId
+      { $set: { username: username, score: score } }, // Correct $set usage
+      { upsert: true } // Upsert option correctly included
     );
 
     if (updateResult.matchedCount === 0 && updateResult.upsertedCount === 0) {
@@ -83,6 +83,28 @@ app.post('/api/score', async (req, res) => {
   }
 });
 
+app.get('/api/score/:userId', async (req, res) => {
+  const userId = req.params.userId;
+  try {
+    await client.connect();
+    const database = client.db('people'); // Adjust the database name as per your setup
+    const scores = database.collection('people'); // Adjust the collection name as per your setup
+
+    const query = { userId: userId };
+    const userScore = await scores.findOne(query);
+
+    if (userScore) {
+      res.json(userScore);
+    } else {
+      res.status(404).json({ message: "No score found for this user" });
+    }
+  } catch (e) {
+    console.error("Error connecting to MongoDB:", e);
+    res.status(500).send('Error fetching score.');
+  } finally {
+    await client.close();
+  }
+});
 
 
 app.post('/api/logout', (req, res) => {

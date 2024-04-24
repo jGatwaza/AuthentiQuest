@@ -15,6 +15,7 @@ import Register from './components/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 
 import { AuthProvider } from './AuthContext';
+import EnterNamePage from './components/EnterNamePage';
 function App() {
   return (
     <AuthProvider>
@@ -26,6 +27,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/score" element={<Score />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/enternamepage" element={<EnterNamePage />} />
         </Routes>
       </div>
     </Router>

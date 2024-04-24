@@ -16,30 +16,38 @@ function Login() {
     createUserWithEmailAndPassword(database, email, password)
       .then(data => {updateUserId(data.user.uid);
         console.log(data, "authData");
-        history('/challenge'); // Use navigate function here
+        history('/enternamepage'); // Use navigate function here
       }).catch(err => alert(err));
     } else {
       signInWithEmailAndPassword(database, email, password)
       .then(data => {
         updateUserId(data.user.uid);
         console.log(data, "authData");
-        history('/challenge'); // Use navigate function here
+        history('/enternamepage'); // Use navigate function here
       }). catch(err => {alert(err); setLogin(true)});
   };
   }
   return (
-    <div className='App'>
-      <div className='rowe'>
-        <div className = {login == false? 'activeColor' :'pointer'} onClick={() => setLogin(false)}>Sign Up</div>
-        <div className = {login == true? 'activeColor' :'pointer'} onClick={() => setLogin(true)}>Sign In</div>
-      </div>
-      <h1>{login?'Sign In':'Sign Up'}</h1>
-    <form onSubmit={(e) =>handleSubmit(e, login?'Sign In':'Sign Up')}>
-      <input type="email" name="email" />
-      <input type="password" name="password"  />
-      <button type="submit">{login?'Sign In':'Sign Up'}</button>
-    </form>
+    <div className="page-container">
+    <div className="form-container">
+        <img src="https://i.ibb.co/bX9ZXjp/a-2.png" className="logo"/>
+        <div className="row"> <div className='col-md-6'><h2 className= {login == false? 'activeColor title' :'pointer title'} onClick={() => setLogin(false)}>Sign Up</h2></div> <div className='col-md-6'>        <h2 className= {login == true? 'activeColor title' :'pointer title'} onClick={() => setLogin(true)}>Sign In</h2></div>
+        </div>
+        <form onSubmit={(e) =>handleSubmit(e, login?'Sign In':'Sign Up')}>
+            <div className="input-container">
+                <input type="email" name="email" placeholder="Email" className="input-field" required/>
+            </div>
+            
+            <div className="input-container">
+                <input type="password" name="password" placeholder="Password" className="input-field" required/>
+            </div>
+            
+            <div className="login-button-container">
+                <button type="submit" className="login-button">{login?'Sign In':'Sign Up'}</button>
+            </div>
+        </form>
     </div>
+</div>
   );
 }
 
