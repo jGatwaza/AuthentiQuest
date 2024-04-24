@@ -355,6 +355,9 @@ body {
 /******************************************************************* LEADERBOARD PAGE */
 
 .leaderboard-container {
+  position: absolute;
+  left: 10vw;
+  top: 0vh;
   width: 80vw !important; /* Width relative to the body width */
 /* Maximum width */
 margin-top: 10vh !important; /* Top margin */
