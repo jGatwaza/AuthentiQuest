@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/jGatwaza/AuthentiQuest/static/css/main.e2a96f3d.chunk.css",
+    "main.js": "/jGatwaza/AuthentiQuest/static/js/main.12aee5a4.chunk.js",
+    "main.js.map": "/jGatwaza/AuthentiQuest/static/js/main.12aee5a4.chunk.js.map",
+    "runtime-main.js": "/jGatwaza/AuthentiQuest/static/js/runtime-main.994d6773.js",
+    "runtime-main.js.map": "/jGatwaza/AuthentiQuest/static/js/runtime-main.994d6773.js.map",
+    "static/css/2.98036eff.chunk.css": "/jGatwaza/AuthentiQuest/static/css/2.98036eff.chunk.css",
+    "static/js/2.ff9ac0fa.chunk.js": "/jGatwaza/AuthentiQuest/static/js/2.ff9ac0fa.chunk.js",
+    "static/js/2.ff9ac0fa.chunk.js.map": "/jGatwaza/AuthentiQuest/static/js/2.ff9ac0fa.chunk.js.map",
+    "static/js/3.e62aba85.chunk.js": "/jGatwaza/AuthentiQuest/static/js/3.e62aba85.chunk.js",
+    "static/js/3.e62aba85.chunk.js.map": "/jGatwaza/AuthentiQuest/static/js/3.e62aba85.chunk.js.map",
+    "index.html": "/jGatwaza/AuthentiQuest/index.html",
+    "precache-manifest.3caa2a3c2adf19a06955e81f3ac2fc7f.js": "/jGatwaza/AuthentiQuest/precache-manifest.3caa2a3c2adf19a06955e81f3ac2fc7f.js",
+    "service-worker.js": "/jGatwaza/AuthentiQuest/service-worker.js",
+    "static/css/2.98036eff.chunk.css.map": "/jGatwaza/AuthentiQuest/static/css/2.98036eff.chunk.css.map",
+    "static/css/main.e2a96f3d.chunk.css.map": "/jGatwaza/AuthentiQuest/static/css/main.e2a96f3d.chunk.css.map",
+    "static/js/2.ff9ac0fa.chunk.js.LICENSE.txt": "/jGatwaza/AuthentiQuest/static/js/2.ff9ac0fa.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.994d6773.js",
+    "static/css/2.98036eff.chunk.css",
+    "static/js/2.ff9ac0fa.chunk.js",
+    "static/css/main.e2a96f3d.chunk.css",
+    "static/js/main.12aee5a4.chunk.js"
+  ]
+}
