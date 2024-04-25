@@ -105,8 +105,8 @@ function Challenge() {
                             style={{ height: '60vh' }}
                         />
                         <div className='mt-4'>
-                            <button className= 'choice-btn regular' onClick={() => handleGuess('human')}>Human</button>
-                            <button className = 'choice-btn danger' onClick={() => handleGuess('ai')}>AI</button>
+                            <button className= 'choice-btn regular' onClick={() => handleGuess('human')}>Real Image</button>
+                            <button className = 'choice-btn danger' onClick={() => handleGuess('ai')}>AI Generated</button>
                         </div>
                         <h4 className='white currently-answered mt-3'>{currentIndex}/50 Answered</h4>
                     </div>
