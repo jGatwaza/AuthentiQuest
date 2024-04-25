@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/jGatwaza/AuthentiQuest/precache-manifest.3caa2a3c2adf19a06955e81f3ac2fc7f.js"
+  "/jGatwaza/AuthentiQuest/precache-manifest.8818f924cda365fd9652b8c81bbcae24.js"
 );
 
 self.addEventListener('message', (event) => {
