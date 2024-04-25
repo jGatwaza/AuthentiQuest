@@ -4,9 +4,9 @@ const connectDB = async () => {
     const options = {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        serverSelectionTimeoutMS: 20000, // Keep this as your server selection timeout
-        socketTimeoutMS: 45000, // Extend socket operations timeout
-        connectTimeoutMS: 30000 // Optional: increase connection timeout
+        serverSelectionTimeoutMS: 20000, 
+        socketTimeoutMS: 45000, 
+        connectTimeoutMS: 30000 
     };
 
     try {

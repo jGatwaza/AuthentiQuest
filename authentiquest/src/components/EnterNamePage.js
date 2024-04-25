@@ -14,8 +14,6 @@ const EnterNamePage = () => {
       navigate('/challenge');
     }
   };
-
-  // Check if userId and username already exist in the context
   useEffect(() => {
     if (userId && username !=null) {
       navigate('/challenge');

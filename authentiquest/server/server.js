@@ -5,13 +5,13 @@ const User = require('../models/User');
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const cors = require('cors');
-const cookieParser = require('cookie-parser'); // for handling cookies
+const cookieParser = require('cookie-parser'); 
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: ['http://localhost:3000'], // assuming your frontend runs on localhost:3000
-    credentials: true // allow the frontend to send cookies
+    origin: ['http://localhost:3000'], 
+    credentials: true 
 }));
 const port = 3001;
 
@@ -32,7 +32,7 @@ app.get('/images', async (req, res) => {
 
         const images = await collection.find().toArray();
 
-        res.json(images); // Send images as JSON
+        res.json(images); 
     } catch (e) {
         console.error("Error connecting to MongoDB:", e);
         res.status(500).send('Error fetching images.');
@@ -48,7 +48,7 @@ app.get('/people', async (req, res) => {
 
       const people = await collection.find().toArray();
 
-      res.json(people); // Send people as JSON
+      res.json(people); 
   } catch (e) {
       console.error("Error connecting to MongoDB:", e);
       res.status(500).send('Error fetching images.');
@@ -62,12 +62,12 @@ app.post('/api/score', async (req, res) => {
     const database = client.db('people');
     const collection = database.collection('people');
 
-    const { userId, username ,score } = req.body; // assuming these values are passed in the body of the request
+    const { userId, username ,score } = req.body; 
 
     const updateResult = await collection.updateOne(
       { userId: userId },
-      { $set: { username: username, score: score } }, // Correct $set usage
-      { upsert: true } // Upsert option correctly included
+      { $set: { username: username, score: score } }, 
+      { upsert: true } 
     );
 
     if (updateResult.matchedCount === 0 && updateResult.upsertedCount === 0) {
@@ -87,8 +87,8 @@ app.get('/api/score/:userId', async (req, res) => {
   const userId = req.params.userId;
   try {
     await client.connect();
-    const database = client.db('people'); // Adjust the database name as per your setup
-    const scores = database.collection('people'); // Adjust the collection name as per your setup
+    const database = client.db('people'); 
+    const scores = database.collection('people'); 
 
     const query = { userId: userId };
     const userScore = await scores.findOne(query);
@@ -111,17 +111,17 @@ app.post('/api/logout', (req, res) => {
   res.clearCookie('session_token');
   res.status(200).send({ message: 'Logged out successfully' });
 });
-  // Placeholder route for challenge
+  
   app.get('/api/challenge', (req, res) => {
     res.send("Challenge Endpoint hit");
   });
   
-  // Placeholder route for score
+  
   app.post('/api/score' ,(req, res) => {
     res.send("Score Endpoint hit");
   });
   
-  // Placeholder route for leaderboard
+ 
   app.get('/api/leaderboard', (req, res) => {
     res.send("Leaderboard Endpoint hit");
   });

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 function Login() {
   const [login, setLogin] = useState(false);
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate(); 
   const history = useNavigate();
   const { updateUserId } = useAuth();
   const handleSubmit = (e, type) => {
@@ -16,14 +16,14 @@ function Login() {
     createUserWithEmailAndPassword(database, email, password)
       .then(data => {updateUserId(data.user.uid);
         console.log(data, "authData");
-        history('/enternamepage'); // Use navigate function here
+        history('/enternamepage'); 
       }).catch(err => alert(err));
     } else {
       signInWithEmailAndPassword(database, email, password)
       .then(data => {
         updateUserId(data.user.uid);
         console.log(data, "authData");
-        history('/enternamepage'); // Use navigate function here
+        history('/enternamepage'); 
       }). catch(err => {alert(err); setLogin(true)});
   };
   }

@@ -20,7 +20,7 @@ const Leaderboard = () => {
             try {
                 const response = await axios.get('http://localhost:3001/people');
                 console.log('People data:', response.data);
-                const sortedPeople = response.data.sort((a, b) => b.score - a.score); // Sort people by score in descending order
+                const sortedPeople = response.data.sort((a, b) => b.score - a.score);
                 setPeople(sortedPeople);
             } catch (error) {
                 console.error('Failed to fetch people data:', error);
@@ -36,7 +36,6 @@ const Leaderboard = () => {
                     AuthentiQuest
                 </div>
                 <div className='wrapper'>
-                    {/* <NavLink to="/" className={({ isActive }) => (isActive ? "active-link" : "link")}>Login</NavLink> */}
                     <NavLink to="/challenge" className={({ isActive }) => (isActive ? "active-link" : "link")}>Challenge</NavLink>
                     <NavLink to="/score" className={({ isActive }) => (isActive ? "active-link" : "link")}>Score</NavLink>
                     <NavLink to="/leaderboard" className={({ isActive }) => (isActive ? "active-link" : "link")}>Leaderboard</NavLink>

@@ -34,7 +34,7 @@ const getScoreMessage = score => {
   useEffect(() => {
     axios.get(`http://localhost:3001/api/score/${userId}`)
         .then(response => {
-            // Make sure the response has the data structure you expect
+           
             setScore(response.data.score);
         })
         .catch(error => {
@@ -49,7 +49,6 @@ const getScoreMessage = score => {
             AuthentiQuest
           </div>
           <div className='wrapper'>
-            {/* <NavLink to="/" className={({ isActive }) => (isActive ? "active-link" : "link")}>Login</NavLink> */}
             <NavLink to="/challenge" className={({ isActive }) => (isActive ? "active-link" : "link")}>Challenge</NavLink>
             <NavLink to="/score" className={({ isActive }) => (isActive ? "active-link" : "link")}>Score</NavLink>
             <NavLink to="/leaderboard" className={({ isActive }) => (isActive ? "active-link" : "link")}>Leaderboard</NavLink>

@@ -5,7 +5,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  NavLink
 } from 'react-router-dom';
 import Login from './components/Login';
 import Challenge from './components/Challenge';

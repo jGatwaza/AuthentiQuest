@@ -24,7 +24,6 @@ function Challenge() {
         fetch('http://localhost:3001/images')
             .then(response => response.json())
             .then(data => {
-                // Shuffle the images before setting them to state
                 const shuffledData = shuffleArray(data);
                 setImages(shuffledData);
             })
@@ -58,7 +57,7 @@ function Challenge() {
                     setCurrentIndex((prevIndex) => prevIndex + 1);
                     setFeedback('');
                 } else {
-                    console.log("Setting game over to true..."); // Debug log
+                    console.log("Setting game over to true..."); 
                     setGameOver(true);
                 }
             }, 100);
@@ -69,11 +68,10 @@ function Challenge() {
         signOut(database).then(() => navigate('/'));
     };
 
-    // Helper function to shuffle the array
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+            [array[i], array[j]] = [array[j], array[i]]; 
         }
         return array;
     }
