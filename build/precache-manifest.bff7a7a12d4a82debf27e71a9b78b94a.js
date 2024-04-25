@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dfba8a95974bb98aa40df19752e0e3f2",
+    "revision": "9c9f1e497bb278473057c6cb3d4f1a5e",
     "url": "/jGatwaza/AuthentiQuest/index.html"
   },
   {

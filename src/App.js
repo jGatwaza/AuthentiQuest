@@ -16,7 +16,7 @@ const basename = "/jGatwaza/AuthentiQuest";
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter basename={basename}>
+      <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/challenge" element={<ProtectedRoute component={Challenge} />} />
