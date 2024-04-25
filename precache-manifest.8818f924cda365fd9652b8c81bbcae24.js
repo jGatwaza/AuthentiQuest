@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dc9848c5ab450fe76f6f0f95b7000988",
+    "revision": "dfba8a95974bb98aa40df19752e0e3f2",
     "url": "/jGatwaza/AuthentiQuest/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/jGatwaza/AuthentiQuest/static/css/2.98036eff.chunk.css"
   },
   {
-    "revision": "6d2a96cf35a3f502b654",
+    "revision": "85c6bc1b607f01e7ceea",
     "url": "/jGatwaza/AuthentiQuest/static/css/main.e2a96f3d.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/jGatwaza/AuthentiQuest/static/js/3.e62aba85.chunk.js"
   },
   {
-    "revision": "6d2a96cf35a3f502b654",
-    "url": "/jGatwaza/AuthentiQuest/static/js/main.12aee5a4.chunk.js"
+    "revision": "85c6bc1b607f01e7ceea",
+    "url": "/jGatwaza/AuthentiQuest/static/js/main.f7072545.chunk.js"
   },
   {
     "revision": "a9476b2e37e870946377",
